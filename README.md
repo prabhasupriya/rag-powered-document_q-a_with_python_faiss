@@ -90,7 +90,7 @@ rag-project/
 Requires Python 3.10+.
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/prabhasupriya/rag-powered-document_q-a_with_python_faiss.git
 cd rag-project
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
