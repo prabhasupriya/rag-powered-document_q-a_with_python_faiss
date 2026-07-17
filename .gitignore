@@ -10,7 +10,7 @@ aiml/
 # Environment for AIML
 # Environment
 .env
-
+my_index
 # Vector index (regenerate via `index` command; don't commit binary index artifacts)
 index_store/
 
