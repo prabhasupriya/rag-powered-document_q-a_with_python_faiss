@@ -1,5 +1,7 @@
 # RAG-Powered Document Q&A System
 
+** Live demo:** https://rag-powered-documentq-awithpythonfaissgit-wjxgztypxuvzwbmfhjnc.streamlit.app/
+
 A from-scratch Retrieval-Augmented Generation (RAG) pipeline built with Python, FAISS, and
 sentence-transformers. Ingests a directory of PDF/TXT documents, chunks and embeds them,
 indexes them for fast semantic search, and answers natural-language questions with a
