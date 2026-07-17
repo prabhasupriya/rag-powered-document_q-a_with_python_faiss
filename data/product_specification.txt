@@ -1,0 +1,19 @@
+Nimbus Analytics — Product Specification: StreamSight Dashboard v3.2
+
+Overview
+StreamSight is Nimbus Analytics' real-time data visualization product, designed to ingest streaming events from customer applications and render live dashboards with sub-second latency. StreamSight v3.2 introduces support for custom alerting rules and multi-tenant workspaces.
+
+Architecture
+StreamSight is built on a three-tier architecture: an ingestion layer using Apache Kafka, a processing layer using Apache Flink for windowed aggregations, and a presentation layer built with React and WebSockets for live updates. The system is designed to handle up to 50,000 events per second per workspace before requiring horizontal scaling of the Kafka partition count.
+
+Data Retention
+Raw event data is retained for 30 days in hot storage (queryable with sub-second latency) and then archived to cold storage (Amazon S3) for up to 2 years. Aggregated metrics (hourly and daily rollups) are retained indefinitely. Customers on the Enterprise tier may request custom retention periods up to 7 years for compliance purposes.
+
+Alerting
+StreamSight v3.2 supports threshold-based and anomaly-detection-based alerts. Threshold alerts trigger when a metric crosses a user-defined value for a sustained period (configurable from 1 to 60 minutes). Anomaly detection alerts use a rolling 14-day baseline and trigger when a metric deviates more than 3 standard deviations from the expected value. Alerts can be routed to email, Slack, PagerDuty, or a custom webhook.
+
+Pricing Tiers
+The Starter tier supports up to 3 dashboards and 1,000 events/second for $299/month. The Professional tier supports up to 25 dashboards and 10,000 events/second for $1,499/month. The Enterprise tier offers unlimited dashboards, custom event throughput, dedicated infrastructure, and a 99.95% uptime SLA, with pricing determined by contract.
+
+Known Limitations
+As of v3.2, StreamSight does not support cross-workspace dashboard sharing. This feature is planned for the v4.0 release, targeted for Q3. Additionally, the mobile app (iOS/Android) offers read-only dashboard viewing and does not currently support alert configuration.

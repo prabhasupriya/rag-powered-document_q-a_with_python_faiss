@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  rag-cli:
+    build: .
+    image: rag-doc-qa:latest
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./index_store:/app/index_store
+    # Example usage:
+    #   docker compose run rag-cli index --path /app/data
+    #   docker compose run rag-cli ask "What is the main topic?"
+    command: ["--help"]

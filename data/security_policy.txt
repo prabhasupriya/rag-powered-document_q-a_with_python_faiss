@@ -1,0 +1,19 @@
+Nimbus Analytics — Information Security Policy
+
+Password Requirements
+All employee accounts must use passwords that are a minimum of 14 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character. Passwords must be rotated every 180 days. Password reuse is prohibited for the last 10 passwords used.
+
+Multi-Factor Authentication
+Multi-factor authentication (MFA) is mandatory for all systems that store or process customer data, including the production AWS environment, the internal admin dashboard, and the customer support ticketing system. Nimbus Analytics uses TOTP-based authenticator apps as the primary MFA method; SMS-based MFA is disabled company-wide due to SIM-swapping risks.
+
+Data Encryption
+All customer data is encrypted at rest using AES-256 and in transit using TLS 1.3. Encryption keys are managed through AWS KMS with automatic key rotation every 90 days. Database backups are encrypted separately and stored in a geographically distinct region from the primary data store.
+
+Incident Response
+In the event of a suspected security incident, employees must report it to the security team within 1 hour of discovery via the #security-incidents Slack channel or the security hotline. The security team follows a documented incident response runbook with four phases: containment, eradication, recovery, and post-incident review. Customers must be notified of any data breach affecting their data within 72 hours, in compliance with GDPR requirements.
+
+Third-Party Vendor Access
+Third-party vendors requiring access to production systems must undergo a security review and sign a data processing agreement (DPA) before access is granted. Vendor access is provisioned with the principle of least privilege and is automatically revoked after 90 days unless renewed.
+
+Employee Offboarding
+Upon employee termination or resignation, all system access must be revoked within 4 hours of the employee's last working day. This includes VPN access, email, Slack, GitHub, and all cloud provider accounts. The employee's manager and IT security are jointly responsible for confirming offboarding checklist completion.

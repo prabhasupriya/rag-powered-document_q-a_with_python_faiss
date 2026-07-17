@@ -1,0 +1,27 @@
+Nimbus Analytics — StreamSight Public API Documentation (v1)
+
+Authentication
+All API requests require a Bearer token passed in the Authorization header. API tokens can be generated from the Workspace Settings page and are scoped to a single workspace. Tokens do not expire automatically but can be revoked manually at any time. Nimbus recommends rotating API tokens every 90 days as a security best practice.
+
+Rate Limits
+The default rate limit is 100 requests per minute per API token for read endpoints (GET requests) and 20 requests per minute for write endpoints (POST, PUT, DELETE). Requests exceeding the rate limit receive a 429 Too Many Requests response with a Retry-After header indicating the number of seconds to wait. Enterprise tier customers can request a custom rate limit increase by contacting their account manager.
+
+Endpoints
+GET /v1/dashboards — Returns a list of all dashboards in the workspace.
+GET /v1/dashboards/{id}/metrics — Returns the current metric values for a specific dashboard.
+POST /v1/events — Ingests a single event into the streaming pipeline. Accepts a JSON payload with required fields: event_name, timestamp, and properties.
+POST /v1/alerts — Creates a new alert rule. Requires metric_name, condition, threshold, and notification_channel fields.
+DELETE /v1/alerts/{id} — Deletes an existing alert rule.
+
+Error Codes
+400 Bad Request — The request payload is malformed or missing required fields.
+401 Unauthorized — The API token is missing, invalid, or has been revoked.
+403 Forbidden — The token is valid but does not have permission for the requested workspace or resource.
+429 Too Many Requests — Rate limit exceeded.
+500 Internal Server Error — An unexpected error occurred; these are automatically logged and monitored by the on-call engineering team.
+
+SDKs
+Official SDKs are maintained for Python, Node.js, and Go. The Python SDK can be installed via `pip install streamsight-sdk` and requires Python 3.8 or higher. Community-maintained SDKs exist for Ruby and Java but are not officially supported by Nimbus Analytics.
+
+Webhooks
+Webhook payloads are signed using HMAC-SHA256, and the signature is included in the X-Nimbus-Signature header. Customers should verify this signature to confirm the webhook originated from Nimbus Analytics before processing the payload. Webhook delivery is retried up to 5 times with exponential backoff if the receiving endpoint does not return a 2xx response.

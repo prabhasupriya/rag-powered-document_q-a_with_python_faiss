@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+env/
+.venv/
+aiml/ 
+# Environment for AIML
+# Environment
+.env
+
+# Vector index (regenerate via `index` command; don't commit binary index artifacts)
+index_store/
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
